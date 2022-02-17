@@ -1,7 +1,7 @@
 # python-crypto-UI-app
-Crypto Price Tracking Application on Python
+Crypto Price Tracking Application Written In Python
 
-This is the code for a basic application that tracks and showcases the price action of the top 100 cryptoassets in the industry, as per CoinMarketCap [https://www.coinmarketcap.com/].
+This is the Python script for a basic application that tracks and showcases the price action of the top 100 cryptoassets in the industry, as per CoinMarketCap [https://www.coinmarketcap.com/].
 
 You will be able to view the price action of the cryptoassets in 5 currencies - £GBP (Pound Sterling), $USD (US Dollar), €EUR (Euro), ₿BTC (Bitcoin), and ΞETH (Ethereum).
 
