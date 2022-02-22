@@ -48,7 +48,7 @@ col1.header('Input Options')
 
 currency_price_unit = col1.selectbox('Select Currency', ('GBP, USD, EUR, BTC, ETH'))
 
-# Web scraping of CMC data
+# Web Scraping of CMC Data
 
 @st.cache
 def load_data():
@@ -94,26 +94,26 @@ def load_data():
 
 df = load_data()
 
-## Sidebar - Cryptocurrency selections
+## Sidebar - Cryptocurrency Selections
 
 sorted_coin = sorted( df['coin_symbol'] )
 selected_coin = col1.multiselect('Cryptocurrency', sorted_coin, sorted_coin)
 
 df_selected_coin = df[ (df['coin_symbol'].isin(selected_coin)) ] # Filtering data
 
-## Sidebar - Number of coins to display
+## Sidebar - # of Coins to Display
 
 num_coin = col1.slider('Display Top N Coins', 1, 100, 100)
 df_coins = df_selected_coin[:num_coin]
 
-## Sidebar - Percent change timeframe
+## Sidebar - % Change Time-Frame
 
 percent_timeframe = col1.selectbox('Percent change time frame',
                                     ['7d','24h', '1h'])
 percent_dict = {"7d":'percent_change_7d',"24h":'percent_change_24h',"1h":'percent_change_1h'}
 selected_percent_timeframe = percent_dict[percent_timeframe]
 
-## Sidebar - Sorting values
+## Sidebar - Sorting Values
 
 sort_values = col1.selectbox('Sort values?', ['Yes', 'No'])
 
@@ -122,7 +122,7 @@ col2.write('Data Dimension: ' + str(df_selected_coin.shape[0]) + ' rows and ' + 
 
 col2.dataframe(df_coins)
 
-# Download CSV data
+# Download CSV Data
 # https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806
 
 def filedownload(df):
@@ -134,7 +134,7 @@ def filedownload(df):
 
 col2.markdown(filedownload(df_selected_coin), unsafe_allow_html=True)
 
-# Preparing data for Bar plot of % Price change
+# Preparing Data for Bar Plot of % Price Change
 
 col2.subheader('Table of % Price Change')
 df_change = pd.concat([df_coins.coin_symbol, df_coins.percent_change_1h, df_coins.percent_change_24h, df_coins.percent_change_7d], axis=1)
@@ -144,7 +144,7 @@ df_change['positive_percent_change_24h'] = df_change['percent_change_24h'] > 0
 df_change['positive_percent_change_7d'] = df_change['percent_change_7d'] > 0
 col2.dataframe(df_change)
 
-# Conditional creation of Bar plot (time frame)
+# Conditional Creation of Bar Plot (Time-Frame)
 
 col3.subheader('Bar plot of % Price Change')
 
